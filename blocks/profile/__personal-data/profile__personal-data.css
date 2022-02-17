@@ -1,0 +1,8 @@
+.profile__personal-data {
+	max-width: 336px;
+	margin: 0;
+	display: grid;
+	grid-template-columns: 294px 24px;
+	grid-template-rows: 39px 18px;
+	gap: 16px 18px;
+}
