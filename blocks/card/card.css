@@ -1,6 +1,15 @@
 .card {
-  width: 282px;
-  min-height: 362px;
+  width: 100%;
+  min-height: 361px;
   border-radius: 10px;
   background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
 }
+
+/* @media screen and (max-width: 767px) {
+  .card {
+    width: 100%;
+  }  
+} */

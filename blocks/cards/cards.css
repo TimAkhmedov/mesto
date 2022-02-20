@@ -1,8 +1,16 @@
 .cards {
   max-width: 880px;
   margin: 0 auto;
-  padding-top: 47.25px;
+  padding: 47.25px 19px 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, 282px);
+  grid-template-columns: repeat(auto-fit, minmax(282px, auto));
   gap: 17px;
+}
+
+@media screen and (max-width: 767px) {
+  .cards {
+    padding-top: 36px;
+    gap: 20px;
+    width: calc(100% - 2 * 19px);
+  }  
 }

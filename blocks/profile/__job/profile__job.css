@@ -1,8 +1,17 @@
 .profile__job {
 	width: 294px;
-	margin: 0;
+	max-height: 18px;
+	margin: 16px 0 0;
 	font-size: 18px;
 	line-height: 22px;
 	font-style: normal;
 	font-weight: 400;
+	color: #ffffff;
+}
+
+@media screen and (max-width: 767px) {
+	.profile__job {
+		margin: 14px auto 0;
+		width: fit-content;
+	}
 }

@@ -1,8 +1,16 @@
 .profile__personal-data {
-	max-width: 336px;
-	margin: 0;
-	display: grid;
-	grid-template-columns: 294px 24px;
-	grid-template-rows: 39px 18px;
-	gap: 16px 18px;
+	width: fit-content;
+	max-height: 73px;
+	margin: 0 0 0 30px;
+	display: flex;
+	flex-direction: column;
+	align-self: center;
+}
+
+@media screen and (max-width: 767px) {
+	.profile__personal-data {
+		margin-top: 22.25px;
+		min-width: 189px;
+		margin: 0 auto;
+	}
 }
