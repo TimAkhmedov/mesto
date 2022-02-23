@@ -15,3 +15,16 @@
   justify-content: center;
   align-items: center;
 }
+
+.form__submit-btn:hover {
+  opacity: .8;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+  .form__submit-btn {
+    width: 238px;
+    height: 46px;
+    margin-bottom: 25px;
+  }  
+}
