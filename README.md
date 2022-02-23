@@ -1,17 +1,10 @@
 # Проект: Место
 
-### Обзор
+### Обзор 4 курсовой работы
 
-* Figma
-* Картинки
+* Аддаптивная верстка на разрешениях: 320рх, 1280рх.
+* Flexbox and Grid technologies.
+* HTML, CSS and JS used.
+* Used branches in Git due to project.
 
-**Figma**
-
-* [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
-
-**Картинки**
-
-Доставать картинки предстоит из Фигмы. Это расхожая практика, поэтому полезно потренироваться.
-Не забудьте [оптимизировать картинки](https://tinypng.com/), чтобы ваш сайт загружался быстрее.
-
-Удачи!
+[Github page.](https://timakhmedov.github.io/mesto/index.html "Мой проект тут!")
