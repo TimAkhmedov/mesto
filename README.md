@@ -7,4 +7,4 @@
 * HTML, CSS and JS used.
 * Used branches in Git due to project.
 
-[Github page.](https://github.com/TimAkhmedov/mesto.git "Мой проект тут!")
+[Github page.](https://timakhmedov.github.io/mesto/index.html "Мой проект тут!")
