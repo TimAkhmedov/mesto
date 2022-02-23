@@ -2,9 +2,9 @@ let container = document.querySelector('.page');
 let editBtn = container.querySelector('.profile__edit-btn');
 let popupOpenBtn = container.querySelector('.popup');
 let popupCloseBtn = popupOpenBtn.querySelector('.popup__close-btn');
-let submitBtn = popupOpenBtn.querySelector('.form__submit-btn');
-let nameInput = container.querySelector('.form__name-field');
-let jobInput = container.querySelector('.form__job-field');
+let submitBtn = popupOpenBtn.querySelector('.popup__submit-btn');
+let nameInput = container.querySelector('.popup__name-field');
+let jobInput = container.querySelector('.popup__job-field');
 let likeBtn = container.querySelector('.card__like-btn');
 
 function openPopup() {
