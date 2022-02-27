@@ -76,28 +76,22 @@
 				</div>
 			</article>
 		</section>
-
-		<footer class="footer">
-			<p class="footer__copyright">© 2020 Mesto Russia</p>
-		</footer>
-
 	</main>
+	<footer class="footer">
+		<p class="footer__copyright">© 2020 Mesto Russia</p>
+	</footer>
 
-	<article class="popup">
+	<section class="popup">
 		<div class="popup__container">
 			<button class="popup__close-btn" type="button" aria-label="Закрыть окно"></button>
-			<form class="popup__profile-edit">
+			<form class="popup__profile-edit" name="popup-profile-edit">
 				<h2 class="popup__title">Редактировать профиль</h2>
-				<label for="profile-name" class="popup__input">
-					<input class="popup__field popup__name-field" placeholder="Введите своё имя" type="text" name="profile-name" id="profile-name">
-				</label>
-				<label for="profile-job" class="popup__input">
-					<input class="popup__field popup__job-field" placeholder="Введите своё увлечение" type="text" name="profile-job" id="profile-job">
-				</label>
+				<input class="popup__field popup__name-field" placeholder="Введите своё имя" type="text" name="profile-name" id="profile-name">
+				<input class="popup__field popup__job-field" placeholder="Введите своё увлечение" type="text" name="profile-job" id="profile-job">
 				<button class="popup__submit-btn" type="submit">Сохранить</button>
 			</form>
 		</div>
 	</article>
-	<script src="./script/script.js"></script>
+	<script src="./script/index.js"></script>
 </body>
 </html>

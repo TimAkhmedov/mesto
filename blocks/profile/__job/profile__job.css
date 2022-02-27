@@ -13,5 +13,7 @@
 	.profile__job {
 		margin: 14px auto 0;
 		width: fit-content;
+		font-size: 14px;
+		line-height: 17px;
 	}
 }
