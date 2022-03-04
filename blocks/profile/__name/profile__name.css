@@ -6,8 +6,8 @@
 	font-weight: 500;
 	font-style: normal;
 	align-self: flex-end;
-	text-overflow: ellipsis; 
-	white-space: nowrap; 
+	text-overflow: ellipsis;
+	white-space: nowrap;
 	overflow: hidden; 
 }
 
