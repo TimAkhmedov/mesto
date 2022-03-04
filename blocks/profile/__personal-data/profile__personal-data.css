@@ -1,6 +1,5 @@
 .profile__personal-data {
 	width: fit-content;
-	max-height: 73px;
 	margin: 0 0 0 30px;
 	display: flex;
 	flex-direction: column;
@@ -9,8 +8,7 @@
 
 @media screen and (max-width: 767px) {
 	.profile__personal-data {
-		margin-top: 22.25px;
 		min-width: 189px;
-		margin: 0 auto;
+		margin: 26px auto 0;
 	}
 }

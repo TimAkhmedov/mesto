@@ -1,16 +1,14 @@
 .profile__info {
 	width: fit-content;
-	height: fit-content;
 	color: #ffffff;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	margin: 0;
 }
 
 @media screen and (max-width: 767px) {
 	.profile__info {
 		width: 100%;
-		min-height: 26px;
-		margin-top: 26px;
 	}	
 }

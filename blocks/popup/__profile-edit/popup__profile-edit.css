@@ -1,7 +1,6 @@
 .popup__profile-edit {
   background-color: #ffffff;
   width: 430px;
-  height: fit-content;
   margin-top: 40px;
   display: flex;
   flex-direction: column;
