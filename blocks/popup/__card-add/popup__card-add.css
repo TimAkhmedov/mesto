@@ -1,0 +1,8 @@
+.popup__card-add {
+  background-color: #ffffff;
+  width: 430px;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+}
