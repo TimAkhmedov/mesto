@@ -1,4 +1,4 @@
-.popup__container_image {
+.popup__container-image {
   display: flex;
   flex-direction: row-reverse;
   padding-top: 50px;
@@ -7,7 +7,7 @@
 }
 
 @media screen and (max-width: 767px) {
-  .popup__container_image {
+  .popup__container-image {
     flex-direction: column;
   }  
 }
