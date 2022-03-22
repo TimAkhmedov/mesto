@@ -1,0 +1,10 @@
+.popup__card-description {
+  display: flex;
+  flex-direction: column;
+  padding-top: 40px;
+}
+@media screen and (max-width: 767px) {
+  .popup__card-description {
+    padding-top: 0;
+  }  
+}

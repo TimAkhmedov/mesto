@@ -1,0 +1,13 @@
+.popup__container_image {
+  display: flex;
+  flex-direction: row-reverse;
+  padding-top: 50px;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 767px) {
+  .popup__container_image {
+    flex-direction: column;
+  }  
+}

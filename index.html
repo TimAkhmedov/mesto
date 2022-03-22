@@ -34,6 +34,7 @@
 
 		<template class="template-card">
 			<article class="card">
+				<button class="card__delete-btn" type="button" aria-label="Удалить"></button>
 				<img class="card__image" src="" alt="" />
 				<div class="card__block">
 					<h2 class="card__title"></h2>
@@ -66,9 +67,16 @@
 			</div>
 		</section>
 
-		<section class="popup">
-
+		<section class="popup popup_image">
+			<div class="popup__container_image">
+				<button class="popup__close-btn" type="button" aria-label="Закрыть окно"></button>
+				<div class="popup__card-description">
+					<img class="popup__card-image" src="" alt="" />
+					<h2 class="popup__card-title"></h2>
+				</div>
+			</div>
 		</section>
+
 
 		<script src="./script/index.js"></script>
 	</body>
