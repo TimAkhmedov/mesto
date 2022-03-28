@@ -61,10 +61,12 @@ function addProfilePersonalData(evt) {
 
 function createCard (element) {
   const cardElement = cardTemplate.cloneNode(true);
+  const cardImageElem = cardElement.querySelector('.card__image');
+  const imagePopupElem = imagePopup.querySelector('.popup__card-image');
   if (cardUrlInput.value && cardTitleInput.value !== undefined) {/*создание новой карточки из формы попапа */
     element.preventDefault();
-    cardElement.querySelector('.card__image').src = cardUrlInput.value;
-    cardElement.querySelector('.card__image').alt = cardTitleInput.value;
+    cardImageElem.src = cardUrlInput.value;
+    cardImageElem.alt = cardTitleInput.value;
     cardElement.querySelector('.card__title').textContent = cardTitleInput.value;
     cardElement.querySelector('.card__like-btn').addEventListener('click', (item) => {
       item.target.classList.toggle('card__like-btn_active');
@@ -73,18 +75,17 @@ function createCard (element) {
       item.target.closest('.card').remove();
     });
     cardElement.querySelector('.card__image').addEventListener('click', (item) => {
-      imagePopup.querySelector('.popup__card-image').alt = item.target.alt;
-      imagePopup.querySelector('.popup__card-image').src = item.target.src;
+      imagePopupElem.alt = item.target.alt;
+      imagePopupElem.src = item.target.src;
       imagePopup.querySelector('.popup__card-title').textContent = item.target.alt;
       openPopup(item);
     });
-    renderPopupCard(cardElement);
     closePopup();
     cardTitleInput.value = "";
     cardUrlInput.value = "";
   } else { /*добавление карточек из массива */
-    cardElement.querySelector('.card__image').alt = element.name;
-    cardElement.querySelector('.card__image').src = element.link;
+    cardImageElem.alt = element.name;
+    cardImageElem.src = element.link;
     cardElement.querySelector('.card__title').textContent = element.name;
     cardElement.querySelector('.card__like-btn').addEventListener('click', (item) => {
       item.target.classList.toggle('card__like-btn_active');
@@ -93,13 +94,13 @@ function createCard (element) {
       item.target.closest('.card').remove();
     });
     cardElement.querySelector('.card__image').addEventListener('click', (item) => {
-      imagePopup.querySelector('.popup__card-image').alt = item.target.alt;
-      imagePopup.querySelector('.popup__card-image').src = item.target.src;
+      imagePopupElem.alt = item.target.alt;
+      imagePopupElem.src = item.target.src;
       imagePopup.querySelector('.popup__card-title').textContent = item.target.alt;
       openPopup(item);
     });
-    renderPopupCard(cardElement);
   }
+  renderPopupCard(cardElement);
 }
 
 function renderPopupCard(cardElement) {
