@@ -1,5 +1,5 @@
 .popup_image {
   flex-direction: column;
   justify-content: flex-start;
-
+  background-color: rgba(0, 0 ,0 , .9);
 }
