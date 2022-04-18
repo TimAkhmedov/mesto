@@ -17,6 +17,13 @@ const cardUrlInput = container.querySelector('.popup__card-url-field');
 const cardsContainer = document.querySelector('.cards');
 const cardTemplate = document.querySelector('.template-card').content;
 
+// const of validation
+const addPlaceForm = document.forms.place;
+const editUserForm = document.forms.user;
+
+
+// end
+
 function openPopup(popup) {
   popup.classList.add('popup_opened');
 }
@@ -90,6 +97,55 @@ function renderCards() {
   });
 }
 
+// function of validation
+
+const validateInput = (input, isValid) => {
+  const errorElement = input.parentNode.querySelector(`#${input.id}-error`);
+
+  // validate input
+  setBorderState(input, isValid);
+  errorElement.textContent = input.validationMessage;
+};
+
+const setButtonState = (button, isValid) => {
+  if (isValid) {
+    button.disabled = false;
+    button.classList.remove('popup__submit-btn_invalid');
+  } else {
+    button.disabled = true;
+    button.classList.add('popup__submit-btn_invalid');
+  }
+}
+
+const setBorderState = (border, isValid) => {
+  if (isValid) {
+    border.classList.remove('popup__field_invalid');
+  } else {
+    border.classList.add('popup__field_invalid');
+  }
+}
+
+const handleInput = (event) => {
+  const currentForm = event.currentTarget;
+  const input = event.target;
+  const submitButton = currentForm.querySelector('.popup__submit-btn'); 
+
+  validateInput(input, currentForm.checkValidity());
+  
+  setButtonState(submitButton, currentForm.checkValidity());
+}
+
+const handleSubmit = (event) => {
+  event.preventDefault();
+
+  const currentForm = event.target;
+
+  if (currentForm .checkValidity()) {
+    currentForm.reset();
+  }
+}
+//end
+
 cardsInitial.forEach(element => createCard(element));
 btnProfileEdit.addEventListener('click', openProfilePopup);
 btnsClosePopup.forEach(item => item.addEventListener('click', closePopup));
@@ -97,3 +153,11 @@ profileEditPopup.addEventListener('submit', addProfilePersonalData);
 cardFormPopup.addEventListener('submit', submitCardForm);
 btnCardAdd.addEventListener('click', openCreateCardPopup);
 renderCards();
+
+// events of validation 
+editUserForm.addEventListener('submit', handleSubmit);
+addPlaceForm.addEventListener('submit', handleSubmit);
+
+editUserForm.addEventListener('input', handleInput);
+addPlaceForm.addEventListener('input', handleInput);
+// end
