@@ -60,6 +60,10 @@ const handleSubmit = (event) => {
   }
 }
 
+const renderSubmitButton = () => {
+  
+}
+
 editUserForm.addEventListener('submit', handleSubmit);
 addPlaceForm.addEventListener('submit', handleSubmit);
 editUserForm.addEventListener('input', handleInput);
