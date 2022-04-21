@@ -1,4 +1,3 @@
-import { cardsInitial } from './cardsInitial.js';
 const container = document.querySelector('.page');
 const btnProfileEdit = container.querySelector('.profile__edit-btn');
 const profilePopup = container.querySelector('.popup_profile');
@@ -6,8 +5,8 @@ const cardPopup = container.querySelector('.popup_card');
 const imagePopup = container.querySelector('.popup_image');
 const btnsClosePopup = container.querySelectorAll('.popup__close-btn');
 const cardFormPopup = container.querySelector('.popup__card-add');
-const profileNameEditInput = container.querySelector('.popup__name-field');
-const profileJobEditInput = container.querySelector('.popup__job-field');
+const profileNameEditInput = container.querySelector('.popup__profile-name-field');
+const profileJobEditInput = container.querySelector('.popup__profile-job-field');
 const profileName = container.querySelector('.profile__name');
 const profileJob = container.querySelector('.profile__job');
 const profileEditPopup = container.querySelector('.popup__profile-edit');

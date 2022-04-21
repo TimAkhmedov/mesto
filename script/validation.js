@@ -2,52 +2,53 @@ const addPlaceForm = document.forms.place;
 const editUserForm = document.forms.user;
 const enableValidation = ({
   submitButtonSelector: '.popup__submit-btn',
-  invalidButtonClass: 'popup__submit-btn_invalid'
+  invalidButtonClass: 'popup__submit-btn_invalid',
+  invalidBorderClass: 'popup__field_invalid'
 });
 
 
 const validateInput = (input) => {
   const errorElement = input.parentNode.querySelector(`#${input.id}-error`);
-
-  // validate input
-  //setBorderState(input, isValid);
   errorElement.textContent = input.validationMessage;
 };
 
-const activateSubmitBtn = (button) => {
+const activateSubmitButton = (button) => {
   button.disabled = false;
-  button.classList.remove('popup__submit-btn_invalid');
+  button.classList.remove(enableValidation.invalidButtonClass);
 }
 
-const deactivateSubmitBtn = (button) => {
+const deactivateSubmitButton = (button) => {
   button.disabled = true;
-  button.classList.add('popup__submit-btn_invalid');
+  button.classList.add(enableValidation.invalidButtonClass);
 }
 
 const setButtonState = (button, isValid) => {
   if (isValid) {
-    activateSubmitBtn(button);
+    activateSubmitButton(button);
   } else {
-    deactivateSubmitBtn(button);
+    deactivateSubmitButton(button);
   }
 }
 
-/*const setBorderState = (border, isValid) => {
+const setBorderState = (field, isValid) => {
   if (isValid) {
-    border.classList.remove('popup__field_invalid');
+    field.classList.remove(enableValidation.invalidBorderClass);
   } else {
-    border.classList.add('popup__field_invalid');
+    field.classList.add(enableValidation.invalidBorderClass);
   }
-}*/
+}
 
 const handleInput = (event) => {
   const currentForm = event.currentTarget;
+  
   const input = event.target;
-  const submitButton = currentForm.querySelector('.popup__submit-btn'); 
+  const currentField = currentForm.querySelector(`.popup__${input.id}-field`);
+  const submitButton = currentForm.querySelector(enableValidation.submitButtonSelector); 
 
   validateInput(input, currentForm.checkValidity());
   
   setButtonState(submitButton, currentForm.checkValidity());
+  setBorderState(currentField, currentField.checkValidity());
 }
 
 const handleSubmit = (event) => {
