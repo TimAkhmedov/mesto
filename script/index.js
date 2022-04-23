@@ -70,7 +70,7 @@ function createCard(element) {
   cardElement.querySelector('.card__delete-btn').addEventListener('click', (evt) => {
     evt.target.closest('.card').remove();
   });
-  cardElement.querySelector('.card__image').addEventListener('click', (evt) => {
+  cardImageElement.addEventListener('click', (evt) => {
     imagePopupElement.alt = evt.target.alt;
     imagePopupElement.src = evt.target.src;
     imagePopup.querySelector('.popup__card-title').textContent = evt.target.alt;
