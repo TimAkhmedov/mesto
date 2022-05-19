@@ -1,7 +1,4 @@
-/*export {Card};
-import {openImagePopup, imagePopupElement, imagePopup} from './index.js';*/
-
-class Card {
+export class Card {
   constructor(data, templateSelector) {
     this._title = data.name;
     this._link = data.link;
@@ -45,3 +42,5 @@ class Card {
     });
   }
 }
+
+import { imagePopupElement, imagePopup, openImagePopup } from "../script/index.js";

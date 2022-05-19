@@ -1,11 +1,9 @@
-/*export {openImagePopup, imagePopupElement, imagePopup};
-import {Card} from './Card.js';*/
 const container = document.querySelector('.page');
 const buttonProfileEdit = container.querySelector('.profile__edit-btn');
 const profilePopup = container.querySelector('.popup_profile');
 const cardPopup = container.querySelector('.popup_card');
-const imagePopup = container.querySelector('.popup_image');
-const imagePopupElement = imagePopup.querySelector('.popup__card-image');
+export const imagePopup = container.querySelector('.popup_image');
+export const imagePopupElement = imagePopup.querySelector('.popup__card-image');
 const closeButtonList = container.querySelectorAll('.popup__close-btn');
 const cardFormPopup = container.querySelector('.popup__card-add');
 const profileNameEditInput = container.querySelector('.popup__profile-name-field');
@@ -18,6 +16,26 @@ const cardTitleInput = container.querySelector('.popup__card-title-field');
 const cardUrlInput = container.querySelector('.popup__card-url-field');
 const cardsContainer = document.querySelector('.cards');
 const popupList = Array.from(container.querySelectorAll('.popup'));
+
+//FormValidator
+const formEdit = profilePopup.querySelector('.popup__form');
+const formAdd = cardPopup.querySelector('.popup__form');
+const validationObject = ({
+  formSelector: '.popup__form', 
+  inputSelector: '.popup__field',
+  submitButtonSelector: '.popup__submit-btn',
+  invalidButtonClass: 'popup__submit-btn_invalid',
+  invalidBorderClass: 'popup__field_invalid'
+});
+
+import {Card} from "../script/Card.js";
+import {FormValidator} from "../script/FormValidator.js";
+import {cardsInitial} from "../script/cardsInitial.js";
+
+const EditFormValidator = new FormValidator(validationObject, formEdit);
+const AddFormValidator = new FormValidator(validationObject, formAdd);
+EditFormValidator.enableValidation();
+AddFormValidator.enableValidation();
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
@@ -38,7 +56,7 @@ function openCreateCardPopup() {
   openPopup(cardPopup);
 }
 
-function openImagePopup() {
+export function openImagePopup() {
   openPopup(imagePopup);
 }
 
@@ -63,10 +81,9 @@ function submitCardForm(evt) {
   evt.preventDefault();
   const element = {name: cardTitleInput.value, link: cardUrlInput.value };
   const submitButton = evt.currentTarget.querySelector('.popup__submit-btn');
-  console.log(evt.target);
   createCard(element);
   closePopup();
-  deactivateSubmitButton(submitButton);
+  AddFormValidator.deactivateSubmitButton();
   cardTitleInput.value = "";
   cardUrlInput.value = "";
 }
@@ -94,49 +111,6 @@ popupList.forEach(popup => {
   });
 })
 
-/*class Card {
-  constructor(data, templateSelector) {
-    this._title = data.name;
-    this._link = data.link;
-    this._alt = data.name;
-    this._templateSelector = templateSelector;
-  }
-
-  _getTemplate() {
-    const cardElement = document
-      .querySelector(this._templateSelector)
-      .content
-      .cloneNode(true);
-    return cardElement;
-  }
-
-  generateCard() {
-    this._element = this._getTemplate();
-    this._cardImageElement = this._element.querySelector('.card__image');
-    this._setEvenetListeners();
-
-    this._cardImageElement.alt = this._title;
-    this._cardImageElement.src = this._link;
-    this._element.querySelector('.card__title').textContent = this._title;
-
-    return this._element;
-  }
-
-  _setEvenetListeners() {
-    this._element.querySelector('.card__like-btn').addEventListener('click', (evt) => {
-      evt.target.classList.toggle('card__like-btn_active');
-    });
-    this._element.querySelector('.card__delete-btn').addEventListener('click', (evt) => {
-      evt.target.closest('.card').remove();
-    });
-    this._cardImageElement.addEventListener('click', () => {
-      imagePopupElement.alt = this._title;
-      imagePopupElement.src = this._link;
-      imagePopup.querySelector('.popup__card-title').textContent = this._alt;
-      openImagePopup(this);
-    });
-  }
-} */
 
 const createCard = (item) => {
   const card = new Card(item, '.template-card');
