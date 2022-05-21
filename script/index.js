@@ -33,7 +33,7 @@ const AddFormValidator = new FormValidator(validationObject, formAdd);
 EditFormValidator.enableValidation();
 AddFormValidator.enableValidation();
 
-function openPopup(popup) {
+export function openPopup(popup) {
   popup.classList.add('popup_opened');
   addListeners();
 }
