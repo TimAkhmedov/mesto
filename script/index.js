@@ -26,21 +26,12 @@ const validationObject = ({
 
 import {Card} from "../script/Card.js";
 import {FormValidator} from "../script/FormValidator.js";
-import {cardsInitial, container} from "../script/utils.js";
+import {cardsInitial, container, openPopup, closePopup } from "../script/utils.js";
 
 const EditFormValidator = new FormValidator(validationObject, formEdit);
 const AddFormValidator = new FormValidator(validationObject, formAdd);
 EditFormValidator.enableValidation();
 AddFormValidator.enableValidation();
-
-export function openPopup(popup) {
-  popup.classList.add('popup_opened');
-  addListeners();
-}
-
-const addListeners = () => {
-  container.addEventListener('keyup', keyHandler);
-}
 
 function openProfilePopup() {
   profileNameEditInput.value = profileName.textContent;
@@ -52,15 +43,7 @@ function openCreateCardPopup() {
   openPopup(cardPopup);
 }
 
-function closePopup() {
-  const popupOpened = container.querySelector('.popup_opened');
-  popupOpened.classList.remove('popup_opened');
-  removeListeners();
-}
 
-const removeListeners = () => {
-  container.removeEventListener('keyup', keyHandler);
-}
 
 function addProfilePersonalData(evt) {
   evt.preventDefault();
@@ -77,12 +60,6 @@ function submitCardForm(evt) {
   AddFormValidator.deactivateSubmitButton();
   cardTitleInput.value = "";
   cardUrlInput.value = "";
-}
-
-const keyHandler = (event) => {
-  if (event.key === "Escape") {
-    closePopup();
-  }
 }
 
 buttonProfileEdit.addEventListener('click', openProfilePopup);
