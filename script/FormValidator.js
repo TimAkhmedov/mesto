@@ -6,6 +6,7 @@ export class FormValidator {
     this._buttonElement = this._formSelector.querySelector(this._objConfig.submitButtonSelector);
     this._inputErrorClass = objConfig.inputErrorClass;
     this._invalidButtonClass = objConfig.invalidButtonClass;
+    this._invalidBorderClass = objConfig.invalidBorderClass;
   }
 
   _hideInputError(inputElement) {
@@ -29,10 +30,10 @@ export class FormValidator {
   }
 
   _setBorderState(inputElem) {
-    if (this._hasInvalidInput()) {
-      inputElem.classList.add(this._objConfig.invalidBorderClass);
+    if (!inputElem.validity.valid) {
+      inputElem.classList.add(this._invalidBorderClass);
     } else {
-      inputElem.classList.remove(this._objConfig.invalidBorderClass);
+      inputElem.classList.remove(this._invalidBorderClass);
     }
   }
 

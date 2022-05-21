@@ -1,9 +1,6 @@
-const container = document.querySelector('.page');
 const buttonProfileEdit = container.querySelector('.profile__edit-btn');
 const profilePopup = container.querySelector('.popup_profile');
 const cardPopup = container.querySelector('.popup_card');
-export const imagePopup = container.querySelector('.popup_image');
-export const imagePopupElement = imagePopup.querySelector('.popup__card-image');
 const closeButtonList = container.querySelectorAll('.popup__close-btn');
 const cardFormPopup = container.querySelector('.popup__card-add');
 const profileNameEditInput = container.querySelector('.popup__profile-name-field');
@@ -14,7 +11,6 @@ const profileEditPopup = container.querySelector('.popup__profile-edit');
 const buttonCardAdd = container.querySelector('.profile__add-btn');
 const cardTitleInput = container.querySelector('.popup__card-title-field');
 const cardUrlInput = container.querySelector('.popup__card-url-field');
-const cardsContainer = document.querySelector('.cards');
 const popupList = Array.from(container.querySelectorAll('.popup'));
 
 //FormValidator
@@ -30,7 +26,7 @@ const validationObject = ({
 
 import {Card} from "../script/Card.js";
 import {FormValidator} from "../script/FormValidator.js";
-import {cardsInitial} from "../script/cardsInitial.js";
+import {cardsInitial, container} from "../script/utils.js";
 
 const EditFormValidator = new FormValidator(validationObject, formEdit);
 const AddFormValidator = new FormValidator(validationObject, formAdd);
@@ -56,10 +52,6 @@ function openCreateCardPopup() {
   openPopup(cardPopup);
 }
 
-export function openImagePopup() {
-  openPopup(imagePopup);
-}
-
 function closePopup() {
   const popupOpened = container.querySelector('.popup_opened');
   popupOpened.classList.remove('popup_opened');
@@ -80,16 +72,11 @@ function addProfilePersonalData(evt) {
 function submitCardForm(evt) {
   evt.preventDefault();
   const element = {name: cardTitleInput.value, link: cardUrlInput.value };
-  const submitButton = evt.currentTarget.querySelector('.popup__submit-btn');
   createCard(element);
   closePopup();
   AddFormValidator.deactivateSubmitButton();
   cardTitleInput.value = "";
   cardUrlInput.value = "";
-}
-
-function renderPopupCard(cardElement) {
-  cardsContainer.prepend(cardElement);
 }
 
 const keyHandler = (event) => {
@@ -115,7 +102,7 @@ popupList.forEach(popup => {
 const createCard = (item) => {
   const card = new Card(item, '.template-card');
   const cardElement = card.generateCard();
-  renderPopupCard(cardElement);
+  return cardElement;
 }
 
 const renderInitialCards = () => {
