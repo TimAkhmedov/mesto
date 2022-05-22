@@ -15,9 +15,9 @@ export class Card {
     return cardElement;
   }
 
-  _renderCard() {
+  /*_renderCard() {
     cardsContainer.prepend(this._element);
-  }
+  }*/
 
   generateCard() {
     this._element = this._getTemplate();
@@ -27,13 +27,12 @@ export class Card {
     this._cardImageElement.alt = this._title;
     this._cardImageElement.src = this._link;
     this._element.querySelector('.card__title').textContent = this._title;
-    this._renderCard();
+    //this._renderCard();
 
     return this._element;
   }
 
   _handleActiveLikeButton() {
-    console.log(this._element.querySelector('.card__like-btn'));
     this._element.querySelector('.card__like-btn').classList.toggle('card__like-btn_active');
   }
 
@@ -57,4 +56,4 @@ export class Card {
   }
 }
 
-import { imagePopupElement, imagePopup, openImagePopup, cardsContainer } from "../script/utils.js";
+import { imagePopupElement, imagePopup, openImagePopup } from "../script/utils.js";

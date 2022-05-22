@@ -26,7 +26,7 @@ const validationObject = ({
 
 import {Card} from "../script/Card.js";
 import {FormValidator} from "../script/FormValidator.js";
-import {cardsInitial, container, openPopup, closePopup } from "../script/utils.js";
+import {cardsInitial, container, openPopup, closePopup, cardsContainer } from "../script/utils.js";
 
 const EditFormValidator = new FormValidator(validationObject, formEdit);
 const AddFormValidator = new FormValidator(validationObject, formAdd);
@@ -43,7 +43,9 @@ function openCreateCardPopup() {
   openPopup(cardPopup);
 }
 
-
+function renderPopupCard(cardElement) { 
+  cardsContainer.prepend(createCard(cardElement)); 
+} 
 
 function addProfilePersonalData(evt) {
   evt.preventDefault();
@@ -56,6 +58,7 @@ function submitCardForm(evt) {
   evt.preventDefault();
   const element = {name: cardTitleInput.value, link: cardUrlInput.value };
   createCard(element);
+  renderPopupCard(element);
   closePopup();
   AddFormValidator.deactivateSubmitButton();
   cardTitleInput.value = "";
@@ -84,7 +87,7 @@ const createCard = (item) => {
 
 const renderInitialCards = () => {
   cardsInitial.forEach((item) => {
-    createCard(item);
+    renderPopupCard(item);
   });
 };  
 renderInitialCards();
