@@ -26,7 +26,6 @@ const validationObject = ({
 
 import {Card} from "../script/Card.js";
 import {FormValidator} from "../script/FormValidator.js";
-import { Popup } from "./Popup.js";
 import {cardsInitial, container, openPopup, closePopup, cardsContainer } from "../script/utils.js";
 
 const EditFormValidator = new FormValidator(validationObject, formEdit);
