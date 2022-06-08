@@ -1,9 +1,10 @@
 export class Card {
-  constructor(data, templateSelector) {
+  constructor(data, templateSelector, handleCardClick) {
     this._title = data.name;
     this._link = data.link;
     this._alt = data.name;
     this._templateSelector = templateSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -51,9 +52,9 @@ export class Card {
       imagePopupElement.alt = this._title;
       imagePopupElement.src = this._link;
       imagePopup.querySelector('.popup__card-title').textContent = this._title;
-      openImagePopup(this);
+      this._handleCardClick();
     });
   }
 }
 
-import { imagePopupElement, imagePopup, openImagePopup } from "../script/utils.js";
+import { imagePopupElement, imagePopup } from "./utils.js";

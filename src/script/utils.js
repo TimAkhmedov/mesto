@@ -1,8 +1,9 @@
 export const container = document.querySelector('.page');
 export const imagePopup = container.querySelector('.popup_image');
 export const imagePopupElement = imagePopup.querySelector('.popup__card-image');
-export const cardsContainer = document.querySelector('.cards');
-export function openImagePopup() {
+//export const cardsContainer = document.querySelector('.cards');
+
+/*export function openImagePopup() {
   openPopup(imagePopup);
 };
 export function openPopup(popup) {
@@ -25,7 +26,7 @@ export function closePopup() {
 
 export const removeListeners = () => {
   container.removeEventListener('keyup', keyHandler);
-}
+}*/
 export const cardsInitial = [{
   name: 'Архыз',
   link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
