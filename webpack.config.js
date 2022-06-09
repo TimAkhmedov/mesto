@@ -14,6 +14,7 @@ module.exports = {
   },
   mode: 'development',
   devServer: {
+    contentBase: path.resolve(__dirname, './dist'),
     static: {
       directory: path.resolve(__dirname, './dist')
     },
@@ -29,7 +30,7 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|gif|woff(2)?|eot|ttf|otf)$/,
-        type: 'asset/resource'
+        type: 'asset/resource',
       },
       {
         test: /\.css$/,
