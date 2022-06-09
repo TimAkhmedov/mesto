@@ -15,7 +15,6 @@ export class Popup {
 
   _handleEscClose = (event) => {
     if (event.key === 'Escape') {
-      //console.log(' Leysan');
       this.close();
     }
   }

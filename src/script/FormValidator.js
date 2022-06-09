@@ -4,20 +4,17 @@ export class FormValidator {
     this._formSelector = formSelector;
     this._inputList = Array.from(this._formSelector.querySelectorAll(this._objConfig.inputSelector));
     this._buttonElement = this._formSelector.querySelector(this._objConfig.submitButtonSelector);
-    this._inputErrorClass = objConfig.inputErrorClass;
     this._invalidButtonClass = objConfig.invalidButtonClass;
     this._invalidBorderClass = objConfig.invalidBorderClass;
   }
 
   _hideInputError(inputElement) {
     const errorElement = this._formSelector.querySelector(`#${inputElement.id}-error`);
-    inputElement.classList.remove(this._inputErrorClass);
     errorElement.textContent = '';
   } 
 
   _showInputError(inputElement, errorMessage) {
     const errorElement = this._formSelector.querySelector(`#${inputElement.id}-error`);
-    inputElement.classList.add(this._inputErrorClass);
     errorElement.textContent = errorMessage;
   }
 
