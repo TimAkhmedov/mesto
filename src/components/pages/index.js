@@ -1,31 +1,22 @@
 import './index.css';
-const buttonProfileEdit = container.querySelector('.profile__edit-btn');
-const profilePopup = container.querySelector('.popup_profile');
-const cardPopup = container.querySelector('.popup_card');
-const profileNameEditInput = container.querySelector('.popup__profile-name-field');
-const profileJobEditInput = container.querySelector('.popup__profile-job-field');
-export const profileName = container.querySelector('.profile__name');
-export const profileJob = container.querySelector('.profile__job');
-const buttonCardAdd = container.querySelector('.profile__add-btn');
+import { Card } from "../Card.js";
+import { FormValidator } from "../FormValidator.js";
+import { PopupWithImage } from "../PopupWithImage.js";
+import { PopupWithForm } from "../PopupWithForm.js";
+import { UserInfo } from "../UserInfo.js";
+import Section from "../Section.js";
+import { 
+  cardsInitial,
+  buttonProfileEdit,
+  profileNameEditInput,
+  profileJobEditInput,
+  buttonCardAdd,
+  formEdit,
+  formAdd,
+  validationObject
+} from "../../utils/utils.js";
 
-//FormValidator
-const formEdit = profilePopup.querySelector('.popup__form');
-const formAdd = cardPopup.querySelector('.popup__form');
-const validationObject = ({
-  formSelector: '.popup__form', 
-  inputSelector: '.popup__field',
-  submitButtonSelector: '.popup__submit-btn',
-  invalidButtonClass: 'popup__submit-btn_invalid',
-  invalidBorderClass: 'popup__field_invalid'
-});
 
-import { Card } from "./script/Card.js";
-import { FormValidator } from "./script/FormValidator.js";
-import { cardsInitial, container } from "./script/utils.js";
-import { PopupWithImage } from "./script/PopupWithImage.js";
-import { PopupWithForm } from "./script/PopupWithForm.js";
-import { UserInfo } from "./script/UserInfo.js";
-import Section from "./script/Section.js";
 
 const createCard = (item) => {
   const card = new Card(item, '.template-card', () => {
@@ -66,6 +57,8 @@ function openProfilePopup() {
   profileJobEditInput.value = userInfo.getUserInfo().profileJobEditInput;
   userInfo.getUserInfo();
   popupProfile.open();
+  editFormValidator.resetError();
+  editFormValidator.deactivateSubmitButton();
 }
 
 buttonProfileEdit.addEventListener('click', openProfilePopup);
@@ -81,6 +74,7 @@ popupCard.setEventListeners();
 
 function openCreateCardPopup() {
   popupCard.open();
+  addFormValidator.resetError();
 }
 
 buttonCardAdd.addEventListener('click', openCreateCardPopup);

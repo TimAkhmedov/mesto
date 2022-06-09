@@ -74,4 +74,12 @@ export class FormValidator {
   enableValidation() {
     this._setEventListeners();
   }
+
+  resetError() {
+    this._inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement);
+      this._setButtonState();
+      inputElement.classList.remove(this._invalidBorderClass);
+    })
+  }
 }
