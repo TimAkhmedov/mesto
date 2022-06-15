@@ -1,5 +1,6 @@
 export class Card {
-  constructor(data, templateSelector, handleCardClick, popupConfirm, user, api ) {
+  constructor(data, templateSelector, handleCardClick, popupConfirm, user, api, like, dislike ) {
+    this._data = data;
     this._title = data.name;
     this._link = data.link;
     this._id = data.id;
@@ -9,9 +10,10 @@ export class Card {
     this._popupConfirm = popupConfirm;
     this._handleCardClick = handleCardClick;
     this._likes = data.likes.length;
-    this._user = user;
     this._isLiked = false;
     this._api = api;
+    this._like = like;
+    this._dislike = dislike;
     data.likes.forEach(like => {
       if (like._id == this._user.id) {
         this._isLiked = true;
@@ -48,27 +50,31 @@ export class Card {
     return this._element;
   }
 
-  _handleLikeButton() {
-    if (this._element.querySelector('.card__like-btn').classList.contains('card__like-btn_active')) {
-      this._api.deleteLike(this._id)
-        .then((res) => {
-          this._element.querySelector('.card__likes-amount').textContent = res.likes.length;
-          this._element.querySelector('.card__like-btn').classList.remove('card__like-btn_active');
-        })
-        .catch(this._api.catchError);
-    } else {
-      this._api.setLike(this._id)
-        .then((res) => {
-          this._element.querySelector('.card__likes-amount').textContent = res.likes.length;
-          this._element.querySelector('.card__like-btn').classList.add('card__like-btn_active');
-        })
-        .catch(this._api.catchError);
-    }
+  _handleDislike() {
+    this._dislike(this._id)
+      .then((res) => {
+        this._element.querySelector('.card__likes-amount').textContent = res.likes.length;
+        this._element.querySelector('.card__like-btn').classList.remove('card__like-btn_active');
+      })
+      .catch(this._api.catchError);
+  }
+
+  _handleLike() {
+    this._like(this._id)
+      .then((res) => {
+        this._element.querySelector('.card__likes-amount').textContent = res.likes.length;
+        this._element.querySelector('.card__like-btn').classList.add('card__like-btn_active');
+      })
+      .catch(this._api.catchError);
   }
 
   _setEventListeners() {
     this._element.querySelector('.card__like-btn').addEventListener('click', () => {
-      this._handleLikeButton();
+      if (this._element.querySelector('.card__like-btn').classList.contains('card__like-btn_active')) {
+        this._handleDislike();
+      } else {
+        this._handleLike();
+      }
     });
     this._element.querySelector('.card__delete-btn').addEventListener('click', () => {
       this._popupConfirm.open(this._element, this._id);
@@ -76,11 +82,5 @@ export class Card {
     this._cardImageElement.addEventListener('click', () => {
       this._handleCardClick(this._title, this._link);
     });
-  }
-
-  _checkCardOwner() {
-    if (this._user !== this._ownerId) {
-      this._element.querySelector('.card__delete-btn').remove();
-    }
   } 
 }

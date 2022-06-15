@@ -15,4 +15,8 @@ export class PopupWithConfirmation extends PopupWithForm {
     this._card = card;
     this._cardId = id;
   }
+
+  handleDeleteCard(card) {
+    card.remove();
+  }
 }

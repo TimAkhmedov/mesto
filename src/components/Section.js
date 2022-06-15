@@ -4,7 +4,7 @@ export default class Section {
     this._container = document.querySelector(containerSelector);
   };
 
-  renderItems(card) {
+  renderItem(card) {
     this._renderer(card);
   };
 

@@ -22,14 +22,7 @@ import { PopupWithConfirmation } from '../components/PopupWithConfirmation';
 const api = new Api({
   url: 'https://mesto.nomoreparties.co/v1/cohort-42',
   password: '59dc190e-ac2d-47e3-971b-b27b0300b3c1'
-  /*{
-    authorization: '59dc190e-ac2d-47e3-971b-b27b0300b3c1',
-    'Content-Type': 'application/json'
-  }*/
 });
-
-
-
 
 const createCard = (item) => {
   const card = new Card(
@@ -40,10 +33,14 @@ const createCard = (item) => {
     },
     popupWithConfirmation,
     user,
-    api);
-  const cardElement = card.generateCard();
-  return cardElement;
+    api,
+    like,
+    dislike
+    )
+  return card.generateCard();
 }
+const like = id => api.setLike(id);
+const dislike = id => api.deleteLike(id);
 
 const insertCard = (card) => {
   const newCard = {
@@ -53,7 +50,7 @@ const insertCard = (card) => {
     id: card._id,
     owner: card.owner._id
   }
-  cardList.renderItems(newCard);
+  cardList.renderItem(newCard);
 }
 
 const cardList = new Section({ 
@@ -64,7 +61,7 @@ const cardList = new Section({
 
 const user = new UserInfo('.profile__name', '.profile__job', '.profile__avatar');
 
-function getUserInfo() {
+function getInitialData() {
   Promise.all([api.getUserInfo(), api.getInitialCards()])
     .then(([userData, cards]) => {
       user.setUserInfo(userData.name, userData.about, userData.avatar, userData._id);
@@ -74,7 +71,7 @@ function getUserInfo() {
     })
     .catch(api.catchError);
 }
-getUserInfo();
+getInitialData();
 
 
 const editFormValidator = new FormValidator(validationObject, formEdit);
@@ -104,8 +101,9 @@ const popupProfile = new PopupWithForm({
 popupProfile.setEventListeners();
 
 function openProfilePopup() {
-  profileNameEditInput.value = user.getUserInfo().profileNameEditInput;
-  profileJobEditInput.value = user.getUserInfo().profileJobEditInput;
+  const userInfoObj = user.getUserInfo();
+  profileNameEditInput.value = userInfoObj.profileNameEditInput;
+  profileJobEditInput.value = userInfoObj.profileJobEditInput;
   user.getUserInfo();
   popupProfile.open();
   editFormValidator.resetError();
@@ -144,15 +142,13 @@ const popupCard = new PopupWithForm({
     popupCard.submitButton.textContent = "Сохранение...";
     api.addCard(formData['card-title'], formData['card-url'])
       .then((card) => {
-        createCard(card);
+        insertCard(card);
         popupCard.close();
       })
       .catch(api.catchError)
       .finally(() => {
         popupCard.submitButton.textContent = "Создать";
       })
-    //cardList.addItem(createCard({name: formData['card-title'], link: formData['card-url']}));
-    //popupCard.close();
   }
 });
 popupCard.setEventListeners();
@@ -170,7 +166,7 @@ const popupWithConfirmation = new PopupWithConfirmation({
     popupWithConfirmation.submitButton.textContent = "Удаление...";
     api.deleteCard(id)
       .then(() => {
-        card.remove();
+        popupWithConfirmation.handleDeleteCard(card);
         popupWithConfirmation.close();
       })
       .catch(api.catchError)
