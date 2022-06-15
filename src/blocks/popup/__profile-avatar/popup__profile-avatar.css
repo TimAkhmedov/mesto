@@ -1,0 +1,12 @@
+.popup__profile-avatar {
+  background-color: #fff;
+  width: 430px;
+  height: 272px;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  border-radius: 10px;
+}

@@ -7,6 +7,8 @@ export const profileJobEditInput = container.querySelector('.popup__profile-job-
 export const buttonCardAdd = container.querySelector('.profile__add-btn');
 export const formEdit = profilePopup.querySelector('.popup__form');
 export const formAdd = cardPopup.querySelector('.popup__form');
+export const formAvatar = container.querySelector('.popup_avatar').querySelector('.popup__form');
+export const avatar = container.querySelector('.profile__avatar');
 export const validationObject = ({
   formSelector: '.popup__form', 
   inputSelector: '.popup__field',

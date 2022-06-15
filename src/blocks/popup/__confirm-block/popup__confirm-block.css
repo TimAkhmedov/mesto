@@ -1,0 +1,11 @@
+.popup__confirm-block {
+  background-color: #fff;
+  height: 181px;
+  width: 430px;
+  margin-top: 40px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}

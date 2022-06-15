@@ -1,0 +1,7 @@
+.popup__container-confirm {
+  display: flex;
+  flex-direction: row-reverse;
+  height: 221px;
+  width: 470px;
+  background-color: rgba(0, 0 ,0 , .9);
+}
