@@ -34,13 +34,22 @@ const createCard = (item) => {
     popupWithConfirmation,
     user,
     api,
-    like,
-    dislike
-    )
+    (card) => {
+      api.setLike(card._id)
+        .then((data) => {
+          card.toggleLike(data);
+        })
+        .catch(api.catchError)
+    },
+    (card) => {
+      api.deleteLike(card._id)
+      .then((data) => {
+        card.toggleLike(data);
+      })
+      .catch(api.catchError)
+    })
   return card.generateCard();
 }
-const like = id => api.setLike(id);
-const dislike = id => api.deleteLike(id);
 
 const insertCard = (card) => {
   const newCard = {

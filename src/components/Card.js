@@ -50,30 +50,18 @@ export class Card {
     return this._element;
   }
 
-  _handleDislike() {
-    this._dislike(this._id)
-      .then((res) => {
-        this._element.querySelector('.card__likes-amount').textContent = res.likes.length;
-        this._element.querySelector('.card__like-btn').classList.remove('card__like-btn_active');
-      })
-      .catch(this._api.catchError);
-  }
-
-  _handleLike() {
-    this._like(this._id)
-      .then((res) => {
-        this._element.querySelector('.card__likes-amount').textContent = res.likes.length;
-        this._element.querySelector('.card__like-btn').classList.add('card__like-btn_active');
-      })
-      .catch(this._api.catchError);
+  toggleLike(data) {
+    this._likes = data.likes;
+    this._element.querySelector('.card__likes-amount').textContent = this._likes.length;
+    this._element.querySelector('.card__like-btn').classList.toggle('card__like-btn_active');
   }
 
   _setEventListeners() {
     this._element.querySelector('.card__like-btn').addEventListener('click', () => {
       if (this._element.querySelector('.card__like-btn').classList.contains('card__like-btn_active')) {
-        this._handleDislike();
+        this._dislike(this);
       } else {
-        this._handleLike();
+        this._like(this);
       }
     });
     this._element.querySelector('.card__delete-btn').addEventListener('click', () => {
